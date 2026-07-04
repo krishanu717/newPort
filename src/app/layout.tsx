@@ -9,9 +9,14 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Developer Portfolio",
-  description: "Calm mind, steady hands, slow builds.",
+  title: "Krishanu Mondal | Developer Portfolio",
+  description: "Krishanu Mondal — Frontend developer building calm, accessible, and polished web experiences with React, Next.js, and TypeScript.",
 };
+
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+import { Noise } from "@/components/ui/Noise";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 export default function RootLayout({
   children,
@@ -24,7 +29,12 @@ export default function RootLayout({
       className={`${poppins.variable} scroll-smooth`}
     >
       <body className="min-h-full flex flex-col antialiased">
-        {children}
+        <Noise />
+        <SmoothScroll>
+          <CustomCursor />
+          <ScrollProgress />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

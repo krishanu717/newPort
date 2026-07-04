@@ -25,13 +25,37 @@ const milestones = [
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 relative z-10">
-      <div className="container mx-auto px-6 max-w-3xl">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-wide text-glow mb-4">
+    <section id="experience" className="py-32 relative z-10">
+      <div className="container mx-auto px-6 max-w-3xl relative">
+        <motion.div 
+          className="absolute -top-16 md:-top-24 right-4 md:-right-12 text-[8rem] md:text-[12rem] font-bold text-white/[0.03] select-none pointer-events-none tracking-tighter"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          04
+        </motion.div>
+
+        <div className="text-center mb-16 relative z-10">
+          <motion.h2 
+            className="text-[clamp(2rem,5vw,3rem)] font-semibold tracking-wide text-glow mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             Flight Log
-          </h2>
-          <p className="text-[var(--color-accent-lavender)]">My professional journey so far.</p>
+          </motion.h2>
+          <motion.p 
+            className="text-[var(--color-accent-lavender)]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            My professional journey so far.
+          </motion.p>
         </div>
 
         <div className="relative border-l-2 border-white/10 ml-4 md:ml-0 md:border-none">

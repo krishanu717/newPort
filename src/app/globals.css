@@ -107,3 +107,45 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Hide native cursor for custom cursor implementation */
+@media (hover: hover) and (pointer: fine) {
+  @media (prefers-reduced-motion: no-preference) {
+    *, a, button, input, textarea, select, [data-cursor] {
+      cursor: none !important;
+    }
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-space-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--color-accent-mint), var(--color-accent-lavender));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--color-accent-lavender), var(--color-accent-mint));
+}
+
+/* Main Content Layout Shift */
+#main-content {
+  transition: padding-left 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 768px) {
+  body:not(.is-top-nav) #main-content {
+    padding-left: 16rem; /* 64 * 0.25rem = 16rem (matches md:pl-64) */
+  }
+  
+  body.is-top-nav #main-content {
+    padding-left: 0;
+  }
+}

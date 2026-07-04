@@ -3,17 +3,17 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { Magnetic } from "@/components/ui/Magnetic";
+import { HTMLMotionProps } from "framer-motion";
 
-interface ButtonProps {
+interface ButtonProps extends HTMLMotionProps<"button"> {
   children: ReactNode;
-  onClick?: () => void;
-  className?: string;
   variant?: "primary" | "secondary";
   href?: string;
 }
 
-export function Button({ children, onClick, className, variant = "primary", href }: ButtonProps) {
-  const baseStyles = "relative inline-flex items-center justify-center px-8 py-3 rounded-full font-medium transition-colors overflow-hidden group";
+export function Button({ children, className, variant = "primary", href, ...props }: ButtonProps) {
+  const baseStyles = "relative inline-flex items-center justify-center px-8 py-3 rounded-full font-medium transition-colors overflow-hidden group w-full md:w-auto";
   
   const variants = {
     primary: "bg-gradient-to-r from-[var(--color-accent-mint)] to-[var(--color-accent-lavender)] text-[#0b1026] hover:text-[#0b1026]",
@@ -22,10 +22,10 @@ export function Button({ children, onClick, className, variant = "primary", href
 
   const Content = (
     <motion.button
-      onClick={onClick}
       className={cn(baseStyles, variants[variant], className)}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
+      {...props}
     >
       {/* Soft glow on hover for primary button */}
       {variant === "primary" && (
@@ -37,11 +37,17 @@ export function Button({ children, onClick, className, variant = "primary", href
 
   if (href) {
     return (
-      <a href={href} className="inline-block">
-        {Content}
-      </a>
+      <Magnetic className="inline-block w-full md:w-auto">
+        <a href={href} className="inline-block w-full md:w-auto">
+          {Content}
+        </a>
+      </Magnetic>
     );
   }
 
-  return Content;
+  return (
+    <Magnetic className="inline-block w-full md:w-auto">
+      {Content}
+    </Magnetic>
+  );
 }

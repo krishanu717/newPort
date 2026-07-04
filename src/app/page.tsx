@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/layout/Navbar";
+import { Sidebar } from "@/components/layout/Sidebar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
@@ -10,9 +10,9 @@ import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
-      <main className="flex-1 flex flex-col relative z-0">
+    <div className="flex flex-col min-h-screen">
+      <Sidebar />
+      <main id="main-content" className="flex-1 flex flex-col relative z-0 w-full focus:outline-none" tabIndex={-1}>
         <Hero />
         <About />
         <TechStack />
@@ -20,8 +20,8 @@ export default function Home() {
         <Experience />
         <Philosophy />
         <Contact />
+        <Footer />
       </main>
-      <Footer />
-    </>
+    </div>
   );
 }
