@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence, Transition } from "framer-motion";
 
 const SECTIONS = [
   { id: "hero", label: "Home" },
@@ -25,7 +25,7 @@ export function Sidebar() {
   const lastScrollTime = useRef(0);
   const { scrollY } = useScroll();
 
-  const butterySpring = { type: "spring", stiffness: 70, damping: 20, mass: 0.6 };
+  const butterySpring: Transition = { type: "spring", stiffness: 70, damping: 20, mass: 0.6 };
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (isMobile) return;
